@@ -442,15 +442,17 @@
                                 </div>
                                 </div>
                                 <div class="row clearfix">
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <label>Satus Taruna</label>
-                                            <input type="text" class="form-control" placeholder="Status Taruna" name="status" value="<?=$getData["STATUS"]?>"/>
-                                        </div>
+                                    <div class="col-sm-6">
+                                        <label>Status Taruna</label>
+                                        <select class="form-control show-tick" name="status" required>
+                                            <option value="null">-- Pilih Status Taruna --</option>
+                                            <option value="Aktif" <?php if($getData["STATUS"]=='Aktif'){ echo "selected"; } ?>>Aktif</option>
+                                            <option value="Alumni" <?php if($getData["STATUS"]=='Alumni'){ echo "selected"; } ?>>Alumni</option>
+                                            <option value="Cuti" <?php if($getData["STATUS"]=='Cuti'){ echo "selected"; } ?>>Cuti</option>
+                                            <option value="Drop Out" <?php if($getData["STATUS"]=='Drop Out'){ echo "selected"; } ?>>Drop Out</option>
+                                        </select>
                                     </div>
-                                </div>
-                                </div>
+                                 </div>
                                                               
                                 <div class="form-group form-float">
                                     <div class="form-line">

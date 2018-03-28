@@ -248,7 +248,7 @@
                                 <div>
                                     <label>Bukti Asuransi</label>
                                     <div>
-                                        <input type="file" class="form-control" name="gambar" required>
+                                        <input type="file" class="form-control" name="gambar">
                                     </div>
                                 </div><br>                                                                                                          
                                 <button class="btn btn-primary waves-effect" type="submit" name="simpan">Simpan</button>

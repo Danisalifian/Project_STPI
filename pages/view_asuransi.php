@@ -346,7 +346,7 @@
                                             <th>Nomor Induk Taruna</th>
                                             <th>Nama Taruna</th>
                                             <th>Jenis Kelamin</th>                                        
-                                            <th>Tingkat</th>
+                                            <th>Angkatan</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -354,7 +354,7 @@
                                             <th>Nomor Induk Taruna</th>
                                             <th>Nama Taruna</th>
                                             <th>Jenis Kelamin</th>                                        
-                                            <th>Tingkat</th>
+                                            <th>Angkatan</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -364,7 +364,7 @@
                                             <td><?=$fetchAsuransi['NIT']?></td>
                                             <td><?=$fetchAsuransi['NAMA']?></td>
                                             <td><?=$fetchAsuransi['J_KEL']?></td>
-                                            <td><?=$fetchAsuransi['TINGKAT']?></td>
+                                            <td><?=$fetchAsuransi['ANGKATAN']?></td>
                                             <!--<td><a href="perbarui_asuransi.php?no_asuransi=<?=$fetchAsuransi["NO_ASURANSI"]?>">Ubah</a>
                                                 <b> | </b>
                                                 <a href="hapus_asuransi.php?no_asuransi=<?=$fetchAsuransi["NO_ASURANSI"]?>">Hapus</a>

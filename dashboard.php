@@ -128,10 +128,44 @@
         $PBU = $PBU + 1;
     }
 
-    $JML_PROD = $PNB_ST + $PNB_ST + $TPU + $TNU + $TLB + $TMB + $TBL + $PLLU + $KP + $PA + $PKP + $OBU + $AUN + $PBU;
+    $JML_PROD = $PNB_ST + $PNB_SP + $TPU + $TNU + $TLB + $TMB + $TBL + $PLLU + $KP + $PA + $PKP + $OBU + $AUN + $PBU;
 
     //------- Data Grafik JML TARUNA BASED NAGKATAN
     $getData = $con->query("SELECT angkatan ,COUNT( angkatan) AS h_angkatan FROM taruna GROUP BY angkatan");
+    
+    $JML_ANG=0;
+    $getDatajml = $con->query("SELECT * FROM taruna");
+    while ($fetchDatajml = $getDatajml->fetch_assoc()) {
+        $JML_ANG = $JML_ANG + 1;
+    }
+
+    //------- Data Grafik JML TARUNA BASED STATUS
+    $aktif=0;
+    $getDataaktif = $con->query("SELECT * FROM taruna WHERE STATUS = 'Aktif'");
+    while ( $fetchDataaktif = $getDataaktif->fetch_assoc()) {
+        $aktif = $aktif + 1;
+    }
+
+    $alumni=0;
+    $getDataalumni = $con->query("SELECT * FROM taruna WHERE STATUS = 'Alumni'");
+    while ( $fetchDataalumni = $getDataalumni->fetch_assoc()) {
+        $alumni = $alumni + 1;
+    }
+
+    $cuti=0;
+    $getDatacuti = $con->query("SELECT * FROM taruna WHERE STATUS = 'Cuti'");
+    while ( $fetchDatacuti = $getDatacuti->fetch_assoc()) {
+        $cuti = $cuti + 1;
+    }
+
+    $DO=0;
+    $getDataDO = $con->query("SELECT * FROM taruna WHERE STATUS = 'Drop Out'");
+    while ( $fetchDataDO = $getDataDO->fetch_assoc()) {
+        $DO = $DO + 1;
+    }
+
+    $JML_STATUS = $aktif + $alumni + $cuti + $DO;
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -189,6 +223,10 @@
         var OBU = <?php echo $OBU;?>;
         var AUN = <?php echo $AUN;?>;
         var PBU = <?php echo $PBU;?>;
+        var aktif = <?php echo $aktif;?>;
+        var alumni = <?php echo $alumni;?>;
+        var cuti = <?php echo $cuti;?>;
+        var DO = <?php echo $DO;?>;
 
     var chartgen = new CanvasJS.Chart("graphgender", {
         animationEnabled: true,
@@ -227,6 +265,25 @@
         }]
     });
 
+    var chartstatus = new CanvasJS.Chart("graphstatus", {
+        animationEnabled: true,
+        theme: "light2", // "light1", "light2", "dark1", "dark2"
+        title:{
+            text: "Jumlah Taruna Berdasarkan Status"
+        },
+        axisY: {
+            title: "Jumlah Taruna"
+        },
+        data: [{        
+            type: "column",
+            dataPoints: [      
+                { y: aktif, label: "AKTIF" },
+                { y: alumni,  label: "ALUMNI" },
+                { y: cuti,  label: "CUTI" },
+                { y: DO,  label: "DROP OUT" }
+            ]
+        }]
+    });
 
     var chartprodi = new CanvasJS.Chart("graphprodi", {
         animationEnabled: true,
@@ -288,6 +345,7 @@
     chartjur.render();
     chartprodi.render();
     chartangkatan.render();
+    chartstatus.render();
     chartgen.render();
 
     }
@@ -528,7 +586,23 @@
                             <div id="graphangkatan" style="height: 300px; width: 100%;"></div>
                         </div>
                         <div class="header">
-                            <h5>Jumlah Total : <?php echo $JML_PROD; ?></h5> 
+                            <h5>Jumlah Total : <?php echo $JML_ANG; ?></h5> 
+                        </div>
+                    </div>
+                </div>
+                <!-- #END# Task Info -->
+
+                <!-- Task Info -->
+                <div class="col-xs-16 col-sm-16 col-md-12 col-lg-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>JUMLAH TARUNA BERDASARKAN STATUS</h2>
+                        </div>
+                        <div class="body">
+                            <div id="graphstatus" style="height: 300px; width: 100%;"></div>
+                        </div>
+                        <div class="header">
+                            <h5>Jumlah Total : <?php echo $JML_STATUS; ?></h5> 
                         </div>
                     </div>
                 </div>

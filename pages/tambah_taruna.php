@@ -264,7 +264,7 @@
                                 <div class="row clearfix">
                                     <div class="col-sm-6">
                                         <label>Agama</label>
-                                        <select class="form-control show-tick" name="agama">
+                                        <select class="form-control show-tick" name="agama" required>
                                             <option value="null">-- Pilih Agama --</option>
                                             <option value="Islam">Islam</option>
                                             <option value="Kristen">Kristen protestan</option>
@@ -303,7 +303,7 @@
                                     <div class="form-group">
                                         <div class="form-line">
                                             <label>Tinggi Badan (cm)</label>
-                                            <input type="text" class="form-control" placeholder="Tinggi Badan" name="tg_badan" />
+                                            <input type="text" class="form-control" placeholder="Tinggi Badan" name="tg_badan" required/>
                                         </div>
                                     </div>
                                 </div>
@@ -311,7 +311,7 @@
                                     <div class="form-group">
                                         <div class="form-line">
                                             <label>Berat Badan (kg)</label>
-                                            <input type="text" class="form-control" placeholder="Berat Badan" name="br_badan" />
+                                            <input type="text" class="form-control" placeholder="Berat Badan" name="br_badan" required/>
                                         </div>
                                     </div>
                                 </div>
@@ -327,7 +327,7 @@
                                     <div class="form-group">
                                         <div class="form-line">
                                             <label>Kode Pos</label>
-                                            <input type="text" class="form-control" placeholder="Kode Pos" name="kd_pos" />
+                                            <input type="text" class="form-control" placeholder="Kode Pos" name="kd_pos" required/>
                                         </div>
                                     </div>
                                 </div>
@@ -335,7 +335,7 @@
                                     <div class="form-group">
                                         <div class="form-line">
                                             <label>Kelurahan</label>
-                                            <input type="text" class="form-control" placeholder="Kelurahan" name="kelurahan"/>
+                                            <input type="text" class="form-control" placeholder="Kelurahan" name="kelurahan" required/>
                                         </div>
                                     </div>
                                 </div>
@@ -343,7 +343,7 @@
                                     <div class="form-group">
                                         <div class="form-line">
                                             <label>Kecamatan</label>
-                                            <input type="text" class="form-control" placeholder="Kecamatan" name="kecamatan"/>
+                                            <input type="text" class="form-control" placeholder="Kecamatan" name="kecamatan" required/>
                                         </div>
                                     </div>
                                 </div>
@@ -357,7 +357,7 @@
                                         <?php
                                             $getProvinsi = $con->query("SELECT * FROM provinsi");
                                         ?> 
-                                        <select class="form-control show-tick" name="provinsi">
+                                        <select class="form-control show-tick" name="provinsi" required>
                                             <option value="null">-- Pilih Provinsi --</option>
                                             <?php while($fetchProvinsi=$getProvinsi->fetch_assoc()) {?>
                                             <option value="<?=$fetchProvinsi["ID_PROV"]?>"><?=$fetchProvinsi['NAMA_PROV'] ?></option>
@@ -369,7 +369,7 @@
                                         <div class="form-group">
                                             <div class="form-line">
                                                 <label>Kota/Kabupaten</label>
-                                                <input type="text" class="form-control" placeholder="Kota/Kabupaten" name="kota" />
+                                                <input type="text" class="form-control" placeholder="Kota/Kabupaten" name="kota" required/>
                                             </div>
                                         </div>
                                     </div>                                    
@@ -382,7 +382,7 @@
                                         <?php
                                             $getJurusan = $con->query("SELECT * FROM jurusan ORDER BY NAMA_JURUSAN ASC");
                                         ?> 
-                                        <select class="form-control show-tick" name="jurusan">
+                                        <select class="form-control show-tick" name="jurusan" required>
                                             <option value="null">-- Pilih Jurusan --</option>
                                             <?php while($fetchJurusan=$getJurusan->fetch_assoc()) {?>
                                             <option value="<?=$fetchJurusan["ID_JURUSAN"]?>"><?=$fetchJurusan['NAMA_JURUSAN'] ?></option>
@@ -396,7 +396,7 @@
                                         <?php
                                             $getProdi = $con->query("SELECT * FROM prodi ORDER BY NAMA_PRODI ASC");
                                         ?> 
-                                        <select class="form-control show-tick" name="prodi">
+                                        <select required class="form-control show-tick" name="prodi" required>
                                             <option value="null">-- Pilih Program Studi --</option>
                                             <?php while($fetchProdi=$getProdi->fetch_assoc()) {?>
                                             <option value="<?=$fetchProdi["ID_PRODI"]?>"><?=$fetchProdi['NAMA_PRODI'] ?></option>
@@ -412,7 +412,7 @@
                                     <div class="form-group">
                                         <div class="form-line">
                                             <label>Kelas</label>
-                                            <input type="text" class="form-control" placeholder="Kelas" name="kelas" />
+                                            <input type="text" class="form-control" placeholder="Kelas" name="kelas" required/>
                                         </div>
                                     </div>
                                 </div>
@@ -420,21 +420,23 @@
                                     <div class="form-group">
                                         <div class="form-line">
                                             <label>Angakatan/Tahun Masuk</label>
-                                            <input type="text" class="form-control" placeholder="Angkatan/Tahun Masuk" name="angkatan" />
+                                            <input type="text" class="form-control" placeholder="Angkatan/Tahun Masuk" name="angkatan" required/>
                                         </div>
                                     </div>
                                 </div>
                                 </div>
                                 <div class="row clearfix">
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <div class="form-line">
-                                            <label>Satus Taruna</label>
-                                            <input type="text" class="form-control" placeholder="Status Taruna" name="status" />
-                                        </div>
+                                    <div class="col-sm-6">
+                                        <label>Status Taruna</label>
+                                        <select class="form-control show-tick" name="status" required>
+                                            <option value="null">-- Pilih Status Taruna --</option>
+                                            <option value="Aktif">Aktif</option>
+                                            <option value="Alumni">Alumni</option>
+                                            <option value="Cuti">Cuti</option>
+                                            <option value="Drop Out">Drop Out</option>
+                                        </select>
                                     </div>
-                                </div>
-                                </div>
+                                 </div>
 
                                 <div class="form-group form-float">
                                     <div class="form-line">
