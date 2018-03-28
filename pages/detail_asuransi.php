@@ -1,7 +1,23 @@
 <?php
-    session_start();
-    include 'koneksi.php';
-    ?>
+session_start();
+if(!isset($_GET["no_asuransi"])){
+    header("location:view_asuransi.php");
+    exit();
+ }
+
+ include 'koneksi.php';
+
+ $no_asuransi = $_GET["no_asuransi"];
+ $getData = $con->query("SELECT * FROM asuransi WHERE NO_ASURANSI = ".$no_asuransi);
+
+ if($getData->num_rows==0){
+    header("location:view_asuransi.php");
+    exit();
+ }
+
+ $getData = $getData->fetch_assoc();
+
+?>
 <!DOCTYPE html>
 <html>
 
@@ -12,7 +28,7 @@
     <!-- Favicon-->
     <link rel="icon" href="../images/logo.png" type="image/x-icon">
     <!-- Google Fonts -->
-    <link href="../fonts/material-fonts.css" type="text/css">
+    <link href="../fonts/material-fonts.css" rel="stylesheet" type="text/css">
     <link href="../iconfont/material-icons.css" rel="stylesheet" type="text/css">
 
     <!-- Bootstrap Core Css -->
@@ -96,7 +112,8 @@
                         <a href="../dashboard.php">
                             <i class="material-icons">home</i>
                             <span>Home</span>
-                        </a>                    
+                        </a>
+                    
                     </li>
                     <li>
                         <a href="javascript:void(0);" class="menu-toggle">
@@ -117,7 +134,7 @@
                             <li>
                         </ul>
                     </li>
-                    <li>
+                    <li class="active">
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">attach_money</i>
                             <span>Asuransi</span>
@@ -128,7 +145,7 @@
                                     <span>Tambah Data Asuransi</span>
                                 </a>
                             </li>
-                            <li>
+                            <li class="active">
                                 <a href="view_asuransi.php">
                                     <span>Lihat Data Asuransi</span>
                                 </a>
@@ -136,7 +153,7 @@
                             <li>
                         </ul>
                     </li>
-                    <li   class="active">
+                    <li>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">work</i>
                             <span>Perlengkapan</span>
@@ -147,7 +164,7 @@
                                     <span>Tambah Data Pengambilan Perlengkapan</span>
                                 </a>
                             </li>
-                            <li   class="active">
+                            <li>
                                 <a href="tambah_perlengkapan.php">
                                     <span>Tambah Data Perlengkapan</span>
                                 </a>
@@ -228,24 +245,32 @@
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
                         <div class="header">
-                            <h2>Tambah Data Perlengkapan</h2>                            
+                            <h2>Detail Data Asuransi</h2>                            
                         </div>
                         <div class="body">
-                            <form id="form_validation" method="POST" action="create-perlengkapan.php">                                
+                            <form id="form_validation" enctype="multipart/form-data">                                
                                 <div class="form-group form-float">
                                     <div class="form-line">
-                                        <input type="text" class="form-control" name="id_paket" maxlength="10" minlength="3" required>
-                                        <label class="form-label">ID Paket Perlengkapan</label>
+                                        <input type="text" class="form-control" name="no_asuransi" maxlength="10" minlength="3" required value="<?=$getData["NO_ASURANSI"]?>">
+                                        <label class="form-label">Nomor Asuransi</label>
                                     </div>
                                     <div class="help-info">Maks 10 karakter</div>
                                 </div>
                                 <div class="form-group form-float">
                                     <div class="form-line">
-                                        <input type="text" class="form-control" name="detail" required>
-                                        <label class="form-label">Detail Perlengkapan</label>
+                                        <input type="text" class="form-control" name="nit" required value="<?=$getData["NIT"]?>">
+                                        <label class="form-label">Nomor Induk Taruna</label>
                                     </div>
-                                </div>                                                                                                          
-                                <button class="btn btn-primary waves-effect" type="submit" name="simpan">Simpan</button>
+                                </div>
+                                <div>
+                                    <label>Bukti Gambar</label><br>
+                                    <?php 
+                                        echo "<img src='../gambar-bukti/".$getData["GAMBAR"]."'>";
+                                    ?><br>
+                                    <br><label><a href="../gambar-bukti/<?=$getData['GAMBAR']?>">Unduh Bukti</a></label>   
+                                </div>
+
+                                
                             </form>
                         </div>
                     </div>

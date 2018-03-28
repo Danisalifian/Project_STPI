@@ -24,11 +24,11 @@
 		$prodi = $_POST["prodi"];
 		$kelas = $_POST["kelas"];
 		$jurusan = $_POST["jurusan"];
-		$tingkat = $_POST["tingkat"];
+		$angkatan = $_POST["angkatan"];
 		$nama_asrama = $_POST["nama_asrama"];
 		$kamar = $_POST["kamar"];
 
-		$con->query("UPDATE taruna SET NAMA = '".$nama."',TMP_LAHIR ='".$tmp_lahir."',TGL_LAHIR ='".$tgl_lahir."',J_KEL ='".$j_kel."',GOL_DARAH ='".$gol_darah."',TG_BADAN ='".$tg_badan."',BR_BADAN ='".$br_badan."',ALAMAT ='".$alamat."',KD_POS ='".$kd_pos."',KELURAHAN ='".$kelurahan."',KECAMATAN ='".$kecamatan."',kota='".$kota."',ID_PROV ='".$provinsi."',NO_TELP ='".$no_telp."',NO_KTP ='".$no_ktp."',NO_KK ='".$no_kk."',EMAIL ='".$email."',ID_PRODI ='".$prodi."',KELAS ='".$kelas."',ID_JURUSAN ='".$jurusan."',TINGKAT ='".$tingkat."',NAMA_ASRAMA ='".$nama_asrama."',KAMAR ='".$kamar."' 
+		$con->query("UPDATE taruna SET NAMA = '".$nama."',TMP_LAHIR ='".$tmp_lahir."',TGL_LAHIR ='".$tgl_lahir."',J_KEL ='".$j_kel."',GOL_DARAH ='".$gol_darah."',TG_BADAN ='".$tg_badan."',BR_BADAN ='".$br_badan."',ALAMAT ='".$alamat."',KD_POS ='".$kd_pos."',KELURAHAN ='".$kelurahan."',KECAMATAN ='".$kecamatan."',kota='".$kota."',ID_PROV ='".$provinsi."',NO_TELP ='".$no_telp."',NO_KTP ='".$no_ktp."',NO_KK ='".$no_kk."',EMAIL ='".$email."',ID_PRODI ='".$prodi."',KELAS ='".$kelas."',ID_JURUSAN ='".$jurusan."',ANGKATAN ='".$angkatan."',NAMA_ASRAMA ='".$nama_asrama."',KAMAR ='".$kamar."' 
 			WHERE NIT =".$nit);
 
 		$_SESSION['msg'] = $msg;

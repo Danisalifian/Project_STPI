@@ -94,7 +94,7 @@ if(!isset($_GET["no_asuransi"])){
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Call Search -->
-                    <li><a href="javascript:void(0);" class="js-search" data-close="true"><i class="material-icons">search</i></a></li>
+                    
                     <!-- #END# Call Search -->
                    
                 </ul>
@@ -245,7 +245,7 @@ if(!isset($_GET["no_asuransi"])){
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
                         <div class="header">
-                            <h2>Tambah Data Asuransi</h2>                            
+                            <h2>Perbarui Data Asuransi</h2>                            
                         </div>
                         <div class="body">
                             <form id="form_validation" method="POST" action="update-asuransi.php" enctype="multipart/form-data">                                

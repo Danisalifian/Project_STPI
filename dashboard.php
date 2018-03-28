@@ -13,6 +13,125 @@
     while ( $fetchDataP = $getDataP->fetch_assoc()) {
         $Pcount = $Pcount + 1;
     }
+
+    $JML_GEN = $Lcount + $Pcount;
+
+    //------- Data Grafik JML TARUNA BASED JURUSAN
+    $JPcount=0;
+    $getDataJP = $con->query("SELECT * FROM taruna WHERE ID_JURUSAN = '001'");
+    while ( $fetchDataJP = $getDataJP->fetch_assoc()) {
+        $JPcount = $JPcount + 1;
+    }
+
+    $JTPcount=0;
+    $getDataJTP = $con->query("SELECT * FROM taruna WHERE ID_JURUSAN = '002'");
+    while ( $fetchDataJTP = $getDataJTP->fetch_assoc()) {
+        $JTPcount = $JTPcount + 1;
+    }
+
+    $JKPcount=0;
+    $getDataJKP = $con->query("SELECT * FROM taruna WHERE ID_JURUSAN = '003'");
+    while ( $fetchDataJKP = $getDataJKP->fetch_assoc()) {
+        $JKPcount = $JKPcount + 1;
+    }
+
+    $JMPcount=0;
+    $getDataJMP = $con->query("SELECT * FROM taruna WHERE ID_JURUSAN = '004'");
+    while ( $fetchDataJMP = $getDataJMP->fetch_assoc()) {
+        $JMPcount = $JMPcount + 1;
+    }
+
+    $JML_JUR = $JPcount + $JTPcount + $JKPcount + $JMPcount;
+
+    //------- Data Grafik JML TARUNA BASED PRODI
+    $PNB_ST=0;
+    $getDataPNB_ST = $con->query("SELECT * FROM taruna WHERE ID_PRODI = '1012'");
+    while ( $fetchDataPNB_ST = $getDataPNB_ST->fetch_assoc()) {
+        $PNB_ST = $PNB_ST + 1;
+    }
+
+    $PNB_SP=0;
+    $getDataPNB_SP = $con->query("SELECT * FROM taruna WHERE ID_PRODI = '1013'");
+    while ( $fetchDataPNB_SP = $getDataPNB_SP->fetch_assoc()) {
+        $PNB_SP = $PNB_SP + 1;
+    }
+
+    $TPU=0;
+    $getDataTPU = $con->query("SELECT * FROM taruna WHERE ID_PRODI = '2007'");
+    while ( $fetchDataTPU = $getDataTPU->fetch_assoc()) {
+        $TPU = $TPU + 1;
+    }
+
+    $TNU=0;
+    $getDataTNU = $con->query("SELECT * FROM taruna WHERE ID_PRODI = '2008'");
+    while ( $fetchDataTNU = $getDataTNU->fetch_assoc()) {
+        $TNU = $TNU + 1;
+    }
+
+    $TLB=0;
+    $getDataTLB = $con->query("SELECT * FROM taruna WHERE ID_PRODI = '2009'");
+    while ( $fetchDataTLB = $getDataTLB->fetch_assoc()) {
+        $TLB = $TLB + 1;
+    }
+
+    $TMB=0;
+    $getDataTMB = $con->query("SELECT * FROM taruna WHERE ID_PRODI = '2010'");
+    while ( $fetchDataTMB = $getDataTMB->fetch_assoc()) {
+        $TMB = $TMB + 1;
+    }
+
+    $TBL=0;
+    $getDataTBL = $con->query("SELECT * FROM taruna WHERE ID_PRODI = '2011'");
+    while ( $fetchDataTBL = $getDataTBL->fetch_assoc()) {
+        $TBL = $TBL + 1;
+    }
+
+    $KP=0;
+    $getDataKP = $con->query("SELECT * FROM taruna WHERE ID_PRODI = '3004'");
+    while ( $fetchDataKP = $getDataKP->fetch_assoc()) {
+        $KP = $KP + 1;
+    }
+
+    $PA=0;
+    $getDataPA = $con->query("SELECT * FROM taruna WHERE ID_PRODI = '3005'");
+    while ( $fetchDataPA = $getDataPA->fetch_assoc()) {
+        $PA = $PA + 1;
+    }
+
+    $PKP=0;
+    $getDataPKP = $con->query("SELECT * FROM taruna WHERE ID_PRODI = '3006'");
+    while ( $fetchDataPKP = $getDataPKP->fetch_assoc()) {
+        $PKP = $PKP + 1;
+    }
+
+    $PLLU=0;
+    $getDataPLLU = $con->query("SELECT * FROM taruna WHERE ID_PRODI = '3014'");
+    while ( $fetchDataPLLU = $getDataPLLU->fetch_assoc()) {
+        $PLLU = $PLLU + 1;
+    }
+
+    $OBU=0;
+    $getDataOBU = $con->query("SELECT * FROM taruna WHERE ID_PRODI = '4001'");
+    while ( $fetchDataOBU = $getDataOBU->fetch_assoc()) {
+        $OBU = $OBU + 1;
+    }
+
+    $AUN=0;
+    $getDataAUN = $con->query("SELECT * FROM taruna WHERE ID_PRODI = '4002'");
+    while ( $fetchDataAUN = $getDataAUN->fetch_assoc()) {
+        $AUN = $AUN + 1;
+    }
+
+    $PBU=0;
+    $getDataPBU = $con->query("SELECT * FROM taruna WHERE ID_PRODI = '4003'");
+    while ( $fetchDataPBU = $getDataPBU->fetch_assoc()) {
+        $PBU = $PBU + 1;
+    }
+
+    $JML_PROD = $PNB_ST + $PNB_ST + $TPU + $TNU + $TLB + $TMB + $TBL + $PLLU + $KP + $PA + $PKP + $OBU + $AUN + $PBU;
+
+    //------- Data Grafik JML TARUNA BASED NAGKATAN
+    $getData = $con->query("SELECT angkatan ,COUNT( angkatan) AS h_angkatan FROM taruna GROUP BY angkatan");
 ?>
 <!DOCTYPE html>
 <html>
@@ -45,35 +164,135 @@
     <link href="css/style.css" rel="stylesheet">
 
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
-    <link href="css/themes/all-themes.css" rel="stylesheet" />
+    <link href="css/themes/all-themes.css" rel="stylesheet" />    
 
     <!-- Menghitung Jumlah Taruna -->
-    <script type="text/javascript">
+    <script>
     window.onload = function() {
         var L = <?php echo $Lcount;?>;
         var P = <?php echo $Pcount;?>;
+        var JP = <?php echo $JPcount;?>;
+        var JTP = <?php echo $JTPcount;?>;
+        var JKP = <?php echo $JKPcount;?>;
+        var JMP = <?php echo $JMPcount;?>;
+        var PNB_ST = <?php echo $PNB_ST;?>;
+        var PNB_SP = <?php echo $PNB_SP;?>;
+        var TPU = <?php echo $TPU;?>;
+        var TNU = <?php echo $TNU;?>;
+        var TLB = <?php echo $TLB;?>;
+        var TMB = <?php echo $TMB;?>;
+        var TBL = <?php echo $TBL;?>;
+        var PLLU = <?php echo $PLLU;?>;
+        var KP = <?php echo $KP;?>;
+        var PA = <?php echo $PA;?>;
+        var PKP = <?php echo $PKP;?>;
+        var OBU = <?php echo $OBU;?>;
+        var AUN = <?php echo $AUN;?>;
+        var PBU = <?php echo $PBU;?>;
 
-    var options = {
+    var chartgen = new CanvasJS.Chart("graphgender", {
+        animationEnabled: true,
         title: {
-            text: "Jumlah Taruna"
+            text: "Jumlah Taruna Berdasarkan Gender"
         },
         data: [{
-                type: "pie",
-                startAngle: 45,
-                showInLegend: "true",
-                legendText: "{label}",
-                indexLabel: "{label} ({y})",
-                yValueFormatString:"#,##0.#"%"",
-                dataPoints: [
-                    { label: "Laki-laki", y: L},
-                    { label: "Perempuan", y: P }
-                ]
+            type: "pie",
+            startAngle: 45,
+            yValueFormatString: "##0.\" Taruna\"",
+            indexLabel: "{label} {y}",
+            dataPoints: [
+                {y: L, label: "Laki-laki"},
+                {y: P, label: "Perempuan"},
+            ]
         }]
-    };
-    $("#chartContainer").CanvasJSChart(options);
+    });
+
+    var chartjur = new CanvasJS.Chart("graphjurusan", {
+        animationEnabled: true,
+        theme: "light2", // "light1", "light2", "dark1", "dark2"
+        title:{
+            text: "Jumlah Taruna Berdasarkan Jurusan"
+        },
+        axisY: {
+            title: "Jumlah Taruna"
+        },
+        data: [{        
+            type: "column",
+            dataPoints: [      
+                { y: JP, label: "PENERBANGAN" },
+                { y: JTP,  label: "TEKNIK PENERBANGAN" },
+                { y: JKP,  label: "KESELAMATAN PENERBANGAN" },
+                { y: JMP,  label: "MANAJEMEN PENERBANGAN" }
+            ]
+        }]
+    });
+
+
+    var chartprodi = new CanvasJS.Chart("graphprodi", {
+        animationEnabled: true,
+        
+        title:{
+            text:"Jumlah Taruna Berdasarkan Program Studi"
+        },
+        axisX:{
+            interval: 1
+        },
+        axisY2:{
+            interlacedColor: "rgba(1,77,101,.2)",
+            gridColor: "rgba(1,77,101,.1)",
+            title: "Jumlah Taruna"
+        },
+        data: [{
+            type: "bar",
+            name: "companies",
+            axisYType: "secondary",
+            color: "#014D65",
+            dataPoints: [
+                { y: PNB_ST, label: "PNB ST" },
+                { y: PNB_SP, label: "PNB SP" },
+                { y: TPU, label: "TPU" },
+                { y: TNU, label: "TNU" },
+                { y: TLB, label: "TLB" },
+                { y: TMB, label: "TMB" },
+                { y: TBL, label: "TBL" },
+                { y: PLLU, label: "PLLU" },
+                { y: KP, label: "KP" },
+                { y: PA, label: "PA" },
+                { y: PKP, label: "PKP" },
+                { y: OBU, label: "OBU" },
+                { y: AUN, label: "AUN" },
+                { y: PBU, label: "PBU" }
+            ]
+        }]
+    });
+
+    var chartangkatan = new CanvasJS.Chart("graphangkatan", {
+        animationEnabled: true,
+        theme: "light2", // "light1", "light2", "dark1", "dark2"
+        title:{
+            text: "Jumlah Taruna Berdasarkan Angkatan"
+        },
+        axisY: {
+            title: "Jumlah Taruna"
+        },
+        data: [{        
+            type: "column",
+            dataPoints: [
+            <?php while ($fetchData = $getData->fetch_assoc()) {?>      
+                { y: <?php echo $fetchData['h_angkatan']?>, label: <?php echo $fetchData['angkatan']?> },
+            <?php } ?>
+            ]
+        }]
+    });
+
+    chartjur.render();
+    chartprodi.render();
+    chartangkatan.render();
+    chartgen.render();
 
     }
     </script>
+      
 
 </head>
 
@@ -120,7 +339,7 @@
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Call Search -->
-                    <li><a href="javascript:void(0);" class="js-search" data-close="true"><i class="material-icons">search</i></a></li>
+                    
                     
                     <!-- #END# Call Search -->
                 </ul>
@@ -266,15 +485,66 @@
             </div>
 
             <div class="row clearfix">
+
+                <!-- Task Info -->
+                <div class="col-xs-16 col-sm-16 col-md-12 col-lg-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>JUMLAH TARUNA BERDASARKAN JURUSAN</h2>
+                        </div>
+                        <div class="body">
+                            <div id="graphjurusan" style="height: 300px; width: 100%;"></div>
+                        </div>
+                        <div class="header">
+                            <h5>Jumlah Total : <?php echo $JML_JUR; ?></h5> 
+                        </div>
+                    </div>
+                </div>
+                <!-- #END# Task Info -->
+
+                 <!-- Task Info -->
+                <div class="col-xs-16 col-sm-16 col-md-12 col-lg-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>JUMLAH TARUNA BERDASARKAN PROGRAM STUDI</h2>
+                        </div>
+                        <div class="body">
+                            <div id="graphprodi" style="height: 300px; width: 100%;"></div>
+                        </div>
+                        <div class="header">
+                            <h5>Jumlah Total : <?php echo $JML_PROD; ?></h5> 
+                        </div>
+                    </div>
+                </div>
+                <!-- #END# Task Info -->
+
+                <!-- Task Info -->
+                <div class="col-xs-16 col-sm-16 col-md-12 col-lg-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>JUMLAH TARUNA BERDASARKAN ANGKATAN/TAHUN MASUK</h2>
+                        </div>
+                        <div class="body">
+                            <div id="graphangkatan" style="height: 300px; width: 100%;"></div>
+                        </div>
+                        <div class="header">
+                            <h5>Jumlah Total : <?php echo $JML_PROD; ?></h5> 
+                        </div>
+                    </div>
+                </div>
+                <!-- #END# Task Info -->
                 
                 <!-- Task Info -->
                 <div class="col-xs-16 col-sm-16 col-md-12 col-lg-12">
                     <div class="card">
                         <div class="header">
-                            <h2>JUMLAH TARUNA</h2>
+                            <h2>JUMLAH TARUNA BERDASARKAN GENDER</h2>
                         </div>
                         <div class="body">
-                            <div id="chartContainer" style="height: 370px; max-width: 920px; margin: 0px auto;"></div>
+                           <div id="graphgender" style="height: 300px; width: 100%;"></div>
+                        </div>
+                        <div class="header">
+                            <h5>Jumlah Total : <?php echo $JML_GEN; ?></h5> 
                         </div>
                     </div>
                 </div>

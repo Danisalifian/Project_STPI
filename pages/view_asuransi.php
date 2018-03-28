@@ -78,7 +78,7 @@
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Call Search -->
-                    <li><a href="javascript:void(0);" class="js-search" data-close="true"><i class="material-icons">search</i></a></li>
+                    
                     <!-- #END# Call Search -->
                    
                 </ul>
@@ -193,27 +193,15 @@
                         </a>
                         <ul class="ml-menu">
                             <li>
-                                <a href="pages/trans_perlengkapan.php">
-                                    <span>Tambah Data Pengambilan Perlengkapan</span>
+                                <a href="tambah_jurusan.php">
+                                    <span>Tambah Data Jurusan</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="pages/tambah_perlengkapan.php">
-                                    <span>Tambah Data Perlengkapan</span>
+                                <a href="view_jurusan.php">
+                                    <span>Lihat Data Jurusan</span>
                                 </a>
                             </li>
-                            <li>
-                                <a href="pages/view_perlengkapan.php">
-                                    <span>Lihat Data Pengambilan Perlengkapan</span>
-                                </a>
-                            </li>
-                            <li>
-                            <li>
-                                <a href="pages/view_perlengkapan.php">
-                                    <span>Lihat Data Perlengkapan</span>
-                                </a>
-                            </li>
-                            <li>
                         </ul>
                     </li>
                     
@@ -275,6 +263,8 @@
                                             <td><a href="perbarui_asuransi.php?no_asuransi=<?=$fetchAsuransi["NO_ASURANSI"]?>">Ubah</a>
                                                 <b> | </b>
                                                 <a href="hapus_asuransi.php?no_asuransi=<?=$fetchAsuransi["NO_ASURANSI"]?>">Hapus</a>
+                                                <b> | </b>
+                                                <a href="detail_asuransi.php?no_asuransi=<?=$fetchAsuransi["NO_ASURANSI"]?>">Detail</a>
                                             </td>
                                         </tr>
                                         <?php } ?>                                                                             
@@ -305,7 +295,7 @@
                                             <th>Nomor Induk Taruna</th>
                                             <th>Nama Taruna</th>
                                             <th>Jenis Kelamin</th>                                        
-                                            <th>Tingkat</th>
+                                            <th>Angkatan</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -313,7 +303,7 @@
                                             <th>Nomor Induk Taruna</th>
                                             <th>Nama Taruna</th>
                                             <th>Jenis Kelamin</th>                                        
-                                            <th>Tingkat</th>
+                                            <th>Angkatan</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -323,7 +313,7 @@
                                             <td><?=$fetchAsuransi['NIT']?></td>
                                             <td><?=$fetchAsuransi['NAMA']?></td>
                                             <td><?=$fetchAsuransi['J_KEL']?></td>
-                                            <td><?=$fetchAsuransi['TINGKAT']?></td>
+                                            <td><?=$fetchAsuransi['ANGKATAN']?></td>
                                             <!--<td><a href="perbarui_asuransi.php?no_asuransi=<?=$fetchAsuransi["NO_ASURANSI"]?>">Ubah</a>
                                                 <b> | </b>
                                                 <a href="hapus_asuransi.php?no_asuransi=<?=$fetchAsuransi["NO_ASURANSI"]?>">Hapus</a>

@@ -78,7 +78,7 @@
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Call Search -->
-                    <li><a href="javascript:void(0);" class="js-search" data-close="true"><i class="material-icons">search</i></a></li>
+                    
                     <!-- #END# Call Search -->
                    
                 </ul>
@@ -243,7 +243,8 @@
                                             <th>Nama</th>
                                             <th>Jenis Kelamin</th>                                        
                                             <th>Jurusan</th>
-                                            <th>Tingkat</th>
+                                            <th>Angkatan</th>
+                                            <th>Status</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -253,7 +254,8 @@
                                             <th>Nama</th>
                                             <th>Jenis Kelamin</th>                                        
                                             <th>Jurusan</th>
-                                            <th>Tingkat</th>
+                                            <th>Angkatan</th>
+                                            <th>Status</th>
                                             <th>Action</th>
                                         </tr>
                                     </tfoot>
@@ -265,7 +267,8 @@
                                             <td><?=$fetchTaruna['NAMA']?></td>
                                             <td><?=$fetchTaruna['J_KEL']?></td>
                                             <td><?=$fetchTaruna['ID_JURUSAN']?></td>
-                                            <td><?=$fetchTaruna['TINGKAT']?></td>
+                                            <td><?=$fetchTaruna['ANGKATAN']?></td>
+                                            <td><?=$fetchTaruna['STATUS']?></td>
                                             <td><a href="perbarui_taruna.php?nit=<?=$fetchTaruna["NIT"]?>">Ubah</a>
                                                 <b> | </b>
                                                 <a href="hapus_taruna.php?nit=<?=$fetchTaruna["NIT"]?>">Hapus</a>

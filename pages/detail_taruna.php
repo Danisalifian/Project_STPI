@@ -97,7 +97,7 @@
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Call Search -->
-                    <li><a href="javascript:void(0);" class="js-search" data-close="true"><i class="material-icons">search</i></a></li>
+                    
                     <!-- #END# Call Search -->
                    
                 </ul>
@@ -276,6 +276,21 @@
                                         <label class="form-label">Tanggal Lahir (yyyy-mm-dd)</label>
                                     </div>
                                 </div>
+                                <div class="row clearfix">
+                                    <div class="col-sm-6">
+                                        <label>Agama</label>
+                                        <select class="form-control show-tick" name="agama">
+                                            <option value="null">-- Pilih Agama --</option>
+                                            <option value="Islam" <?php if($getData["AGAMA"]=='Islam'){ echo "selected"; } ?>>Islam</option>
+                                            <option value="Kristen Protestan" <?php if($getData["AGAMA"]=='Kristen Protestan'){ echo "selected"; } ?>>Kristen protestan</option>
+                                            <option value="Katolik" <?php if($getData["AGAMA"]=='Katolik'){ echo "selected"; } ?>>Katolik</option>
+                                            <option value="Hindu" <?php if($getData["AGAMA"]=='Hindu'){ echo "selected"; } ?>>Hindu</option>
+                                            <option value="Buddha" <?php if($getData["AGAMA"]=='Buddha'){ echo "selected"; } ?>>Buddha</option>
+                                            <option value="Kong Hu Cu" <?php if($getData["AGAMA"]=='Kong Hu Cu'){ echo "selected"; } ?>>Kong Hu Cu</option>
+                                        </select>
+                                    </div>
+                                 </div>
+
                                 <label>Jenis Kelamin</label>
                                 <div class="form-group">
                                     <input type="radio" name="j_kel" id="L" class="with-gap" value="Laki-laki" <?php in_array('Laki-laki', $checked) ? print"checked":""; ?> />
@@ -380,23 +395,10 @@
                                  
                                  <div class="row clearfix">
                                     <div class="col-sm-6">
-                                        <label>Program Studi</label>
-                                        <!-- Baca PRODI dari data base-->                                
-                                        <?php
-                                            $getProdi = $con->query("SELECT * FROM prodi");
-                                        ?> 
-                                        <select class="form-control show-tick" name="prodi">
-                                            <?php while($fetchProdi=$getProdi->fetch_assoc()) {?>
-                                            <option value="<?=$fetchProdi["ID_PRODI"]?>"  <?php if($getData["ID_PRODI"]== $fetchProdi["ID_PRODI"]){ echo "selected"; } ?>><?=$fetchProdi['NAMA_PRODI'] ?></option>
-                                            <?php } ?>
-                                        </select>
-                                        <!-- END Baca PRODI dari data base--> 
-                                    </div>
-                                    <div class="col-sm-6">
                                         <label>Jurusan</label>
                                         <!-- Baca Jurusan dari data base-->                                
                                         <?php
-                                            $getJurusan = $con->query("SELECT * FROM jurusan");
+                                            $getJurusan = $con->query("SELECT * FROM jurusan ORDER BY NAMA_JURUSAN ASC");
                                         ?> 
                                         <select class="form-control show-tick" name="jurusan">
                                             <?php while($fetchJurusan=$getJurusan->fetch_assoc()) {?>
@@ -405,6 +407,19 @@
                                         </select>
                                         <!-- END Baca Jurusan dari data base-->
                                     </div>
+                                    <div class="col-sm-6">
+                                        <label>Program Studi</label>
+                                        <!-- Baca PRODI dari data base-->                                
+                                        <?php
+                                            $getProdi = $con->query("SELECT * FROM prodi ORDER BY NAMA_PRODI ASC");
+                                        ?> 
+                                        <select class="form-control show-tick" name="prodi">
+                                            <?php while($fetchProdi=$getProdi->fetch_assoc()) {?>
+                                            <option value="<?=$fetchProdi["ID_PRODI"]?>"  <?php if($getData["ID_PRODI"]== $fetchProdi["ID_PRODI"]){ echo "selected"; } ?>><?=$fetchProdi['NAMA_PRODI'] ?></option>
+                                            <?php } ?>
+                                        </select>
+                                        <!-- END Baca PRODI dari data base--> 
+                                    </div>                                    
                                  </div>                                
                                 <!-- #END# Select -->
                                 <div class="row clearfix">
@@ -419,8 +434,18 @@
                                 <div class="col-sm-6">
                                     <div class="form-group">
                                         <div class="form-line">
-                                            <label>Tingkat</label>
-                                            <input type="text" class="form-control" placeholder="Tingkat" name="tingkat" value="<?=$getData["TINGKAT"]?>"/>
+                                            <label>Angkatan/Tahun Masuk</label>
+                                            <input type="text" class="form-control" placeholder="Angkatan/Tahun Masuk" name="angkatan" value="<?=$getData["ANGKATAN"]?>"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                                <div class="row clearfix">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <label>Satus Taruna</label>
+                                            <input type="text" class="form-control" placeholder="Status Taruna" name="status" value="<?=$getData["STATUS"]?>"/>
                                         </div>
                                     </div>
                                 </div>
@@ -465,12 +490,10 @@
                                             <input type="text" class="form-control" placeholder="Kamar" name="kamar" value="<?=$getData["KAMAR"]?>"/>
                                         </div>
                                     </div>
-                                </div>                               
-
-                                
-                                
-                                <button class="btn btn-primary waves-effect" type="submit" name="Kembali" href="view_taruna.php">Kembali Ke Tabel Data Taruna</button>
-                                <button class="btn btn-primary waves-effect" type="submit" name="Kembali" href="print.php">Cetak Data Taruna</button>
+                                </div>                            
+      
+                                <button class="btn btn-primary waves-effect" type="submit" name="kembali" href="view_taruna.php">Kembali Ke Tabel Data Taruna</button>
+                                <button class="btn btn-primary waves-effect" type="submit" name="cetak" href="print.php">Cetak Data Taruna</button>
                                 <div></div>
                             </form>
                         </div>
