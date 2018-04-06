@@ -282,7 +282,7 @@
                                         <select class="form-control show-tick" name="agama">
                                             <option value="null">-- Pilih Agama --</option>
                                             <option value="Islam" <?php if($getData["AGAMA"]=='Islam'){ echo "selected"; } ?>>Islam</option>
-                                            <option value="Kristen Protestan" <?php if($getData["AGAMA"]=='Kristen Protestan'){ echo "selected"; } ?>>Kristen protestan</option>
+                                            <option value="Kristen" <?php if($getData["AGAMA"]=='Kristen'){ echo "selected"; } ?>>Kristen protestan</option>
                                             <option value="Katolik" <?php if($getData["AGAMA"]=='Katolik'){ echo "selected"; } ?>>Katolik</option>
                                             <option value="Hindu" <?php if($getData["AGAMA"]=='Hindu'){ echo "selected"; } ?>>Hindu</option>
                                             <option value="Buddha" <?php if($getData["AGAMA"]=='Buddha'){ echo "selected"; } ?>>Buddha</option>

@@ -166,6 +166,46 @@
 
     $JML_STATUS = $aktif + $alumni + $cuti + $DO;
 
+    //------- Data Grafik JML TARUNA BASED AGAMA
+    $islam=0;
+    $getDataislam = $con->query("SELECT * FROM taruna WHERE AGAMA = 'Islam'");
+    while ( $fetchDataislam = $getDataislam->fetch_assoc()) {
+        $islam = $islam + 1;
+    }
+
+    $kristen=0;
+    $getDatakristen = $con->query("SELECT * FROM taruna WHERE AGAMA = 'Kristen'");
+    while ( $fetchDatakristen = $getDatakristen->fetch_assoc()) {
+        $kristen = $kristen + 1;
+    }
+
+    $katolik=0;
+    $getDatakatolik = $con->query("SELECT * FROM taruna WHERE AGAMA = 'Katolik'");
+    while ( $fetchDatakatolik = $getDatakatolik->fetch_assoc()) {
+        $katolik = $katolik + 1;
+    }
+
+    $hindu=0;
+    $getDatahindu = $con->query("SELECT * FROM taruna WHERE AGAMA = 'Hindu'");
+    while ( $fetchDatahindu = $getDatahindu->fetch_assoc()) {
+        $hindu = $hindu + 1;
+    }
+
+    $buddha=0;
+    $getDatabuddha = $con->query("SELECT * FROM taruna WHERE AGAMA = 'Buddha'");
+    while ( $fetchDatabuddha = $getDatabuddha->fetch_assoc()) {
+        $buddha = $buddha + 1;
+    }
+
+    $khc=0;
+    $getDatakhc = $con->query("SELECT * FROM taruna WHERE AGAMA = 'Kong Hu Cu'");
+    while ( $fetchDatakhc = $getDatakhc->fetch_assoc()) {
+        $khc = $khc + 1;
+    }
+
+
+    $JML_AGAMA= $islam + $kristen + $katolik + $buddha + $hindu + $khc;
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -227,6 +267,13 @@
         var alumni = <?php echo $alumni;?>;
         var cuti = <?php echo $cuti;?>;
         var DO = <?php echo $DO;?>;
+        var islam = <?php echo $islam?>;
+        var kristen = <?php echo $kristen?>;
+        var katolik = <?php echo $katolik?>;
+        var hindu = <?php echo $hindu?>;
+        var buddha = <?php echo $buddha?>;
+        var khc = <?php echo $khc?>;
+
 
     var chartgen = new CanvasJS.Chart("graphgender", {
         animationEnabled: true,
@@ -281,6 +328,29 @@
                 { y: alumni,  label: "ALUMNI" },
                 { y: cuti,  label: "CUTI" },
                 { y: DO,  label: "DROP OUT" }
+            ]
+        }]
+    });
+
+    var chartagama = new CanvasJS.Chart("graphagama", {
+        animationEnabled: true,
+        theme: "light2", // "light1", "light2", "dark1", "dark2"
+        title:{
+            text: "Jumlah Taruna Berdasarkan Agama"
+        },
+        axisY: {
+            title: "Jumlah Taruna"
+        },
+        data: [{        
+            type: "column",
+            dataPoints: [      
+                { y: islam, label: "Islam" },
+                { y: kristen,  label: "Kristen Protestan" },
+                { y: katolik,  label: "Katolik" },
+                { y: hindu,  label: "Hindu" },
+                { y: buddha,  label: "Buddha" },
+                { y: khc,  label: "Kong Hu Cu" }
+
             ]
         }]
     });
@@ -344,6 +414,7 @@
 
     chartjur.render();
     chartprodi.render();
+    chartagama.render();
     chartangkatan.render();
     chartstatus.render();
     chartgen.render();
@@ -603,6 +674,22 @@
                         </div>
                         <div class="header">
                             <h5>Jumlah Total : <?php echo $JML_STATUS; ?></h5> 
+                        </div>
+                    </div>
+                </div>
+                <!-- #END# Task Info -->
+
+                <!-- Task Info -->
+                <div class="col-xs-16 col-sm-16 col-md-12 col-lg-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2>JUMLAH TARUNA BERDASARKAN AGAMA</h2>
+                        </div>
+                        <div class="body">
+                           <div id="graphagama" style="height: 300px; width: 100%;"></div>
+                        </div>
+                        <div class="header">
+                            <h5>Jumlah Total : <?php echo $JML_AGAMA; ?></h5> 
                         </div>
                     </div>
                 </div>
